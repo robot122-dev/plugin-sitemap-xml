@@ -516,6 +516,9 @@ class SitemapXML extends \Cetera\Catalog
                 if ($key == "table")
                     continue;
 
+                if (is_array($val) && empty($val))
+                    continue;
+
                 if (strpos($key, "!") !== false) {
                     $key = preg_replace("#^!#is", "", $key) . (is_array($val) ? " NOT IN (" : " <> ");
                 } elseif (strpos($key, ">=") !== false) {
