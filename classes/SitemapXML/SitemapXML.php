@@ -303,7 +303,11 @@ class SitemapXML extends \Cetera\Catalog
                 }
 
                 if (!$bFinished) {
-                    $dir = \Cetera\Catalog::getById($NS["CURRENT_DIR"]);
+                    try {
+                        $dir = \Cetera\Catalog::getById($NS["CURRENT_DIR"]);
+                    } catch (\Exception $e) {
+                        $dir = false;
+                    }
                     if ($dir) {
                         if (isset($NS['CURRENT_DIR_INSERT']) && $NS["CURRENT_DIR_INSERT"]) {
                             $dirInfo = self::process_child($dir);
