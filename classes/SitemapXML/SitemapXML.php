@@ -786,7 +786,7 @@ xsi:schemaLocation="http://www.google.com/schemas/sitemap/0.84 http://www.google
 
     public static function getTreeList($id, $nodeId, $root = false)
     {
-        $p = new self(1);
+        $p = new self($id);
         $mainNode = $p->process_child(\Cetera\Catalog::getById($nodeId));
         $mainNode["expanded"] = true;
         $mainNode["elements"] = "";
